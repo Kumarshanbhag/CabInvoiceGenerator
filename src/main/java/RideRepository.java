@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class RideRepository {
 
@@ -15,7 +12,11 @@ public class RideRepository {
         ArrayList<Ride> rideList = this.userRides.get(userId);
         if(rideList == null) {
             this.userRides.put(userId, new ArrayList<Ride>(Arrays.asList(rides)));
+        } else {
+            Collections.addAll(rideList, rides);
+            this.userRides.put(userId, rideList);
         }
+
     }
 
     public Ride[] getRides(String userId) {
